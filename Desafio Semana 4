@@ -1,0 +1,91 @@
+algoritmo "Projeto Semana 4 - Cliente Pacetech - App Easy Trip for EUA"
+
+var
+dollarCot, celsiusTemp, fahrenheitTemp, reaisValue, dollarValue: real
+menu1, menu2: literal
+continuar: logico
+
+inicio
+
+Escreval("Welcome to Easy Trip for EUA")
+Escreval()
+Escreval("Enter the US Dollar Exchange Rate: ")
+leia (dollarCot)
+
+continuar <- verdadeiro
+
+repita
+
+Escreval ("Look at the available options below")
+Escreval()
+Escreval(" 1 - Option 1 Converter - ºCelsius - ºFahrenheit")
+Escreval()
+Escreval(" 2 - Option 2 Converter - ºFahrenheit - ºCelsius")
+Escreval()
+Escreval(" 3 - Option 3 Converter - R$ Real for US$ Dollar")
+Escreval()
+Escreval(" 4 - Option 4 Converter - R$ Real for US$ Dollar")
+Escreval()
+Escreval(" 5 - End ")
+Escreval()
+Escreval("Enter the conversion option below: ")
+
+leia (menu1)
+Escreval()
+
+escolha menu1
+
+Caso "1"
+Escreval("Enter Temperature Celsius Degrees: ")
+leia (celsiusTemp)
+fahrenheitTemp <- 1.8 * celsiusTemp + 32
+Escreval(celsiusTemp, "ºC Converted ", fahrenheitTemp:2:2, "ºF.")
+
+Caso "2"
+Escreval("Enter Temperature Fahrenheit Degrees: ")
+leia(fahrenheitTemp)
+celsiusTemp <- (fahrenheitTemp - 32) / 1.8
+escreval(fahrenheitTemp, "ºF Converted ", celsiusTemp:2:2, "ºC.")
+
+Caso "3"
+Escreval("Enter the value in (R$): ")
+leia(reaisValue)
+dollarValue <- reaisValue / dollarCot
+Escreval("R$ ", reaisValue:2:2, " Converted US$ ", dollarValue:2:2, " Today."  )
+
+Caso "4"
+Escreval("Enter the value in (US$): ")
+leia(dollarValue)
+reaisValue <- dollarValue * dollarCot
+Escreval("US$ ", dollarValue:2:2, " Converted R$ ", reaisValue:2:2, " Today.")
+
+Caso "5"
+interrompa
+
+outrocaso
+limpatela
+Escreval()
+Escreval("Option not found")
+
+fimescolha
+    
+repita
+Escreval()
+Escreval("Back to menu? (y - yes / n - no) ")
+leia(menu2)
+ate (menu2 = "n") ou (menu2 = "y")
+
+se (menu2 = "n") entao
+    continuar <- Falso
+senao
+limpatela
+fimse
+
+ate (menu1 = "5") ou (continuar = Falso)
+
+limpatela
+escreval()
+escreval("Thanks for using our app")
+
+
+fimalgoritmo
