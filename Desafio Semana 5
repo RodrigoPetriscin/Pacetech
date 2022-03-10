@@ -1,0 +1,108 @@
+algoritmo "Projeto Semana 5 - Cliente Pacetech - App Easy Trip V2"
+
+var
+
+option: literal
+i, j : inteiro
+horary, temperatures: vetor[1..4] de real
+menu1, menu2 : real
+
+procedimento menu()
+
+inicio
+
+     Escreval(¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨)
+     Escreval("Look at the available options below")
+     Escreval()
+     Escreval("1 - Option 1 Converter - ºCelsius - ºFahrenheit")
+     Escreval()
+     Escreval("2 - Option 2 Converter - ºFahrenheit - ºCelsius")
+     Escreval()
+     Escreval("3 - End")
+     Escreval()
+     Escreval(¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨)
+     Escreva("Enter the conversion option below: ")
+  leia(option)
+limpatela
+
+fimprocedimento
+
+procedimento armazenador()
+inicio
+
+   para i de 1 ate 4 faca
+        Escreva("Inform the Temperature", i, ": ")
+        leia(temperatures[i])
+
+        Escreva("Enter the time of the measured Temperature: ")
+        leia(horary[i])
+        Escreval()
+   fimpara
+limpatela
+fimprocedimento
+
+procedimento conversor()
+
+inicio
+
+metodoBolha()
+
+se ( option = "1" ) entao
+   para i de 1 ate 4 faca
+   Escreval("Temperature measured", temperatures[i], "°C, and local time:", horary[i], " hs - Temperature Converted ", ((temperatures[i] * 1.8) + 32):4:2, "°F")
+   fimpara
+senao
+   para i de 1 ate 4 faca
+      escreval("Temperature measured", temperatures[i], "°F, and local time:", horary[i], " hs - Temperature Converted ", ((temperatures[i] - 32) / 1.8):4:2, "°C")
+   fimpara
+fimse
+
+fimprocedimento
+
+procedimento metodoBolha()
+
+inicio
+
+para i de 1 ate 4 faca
+   para j de 1 ate 4 faca
+         se ( temperatures[j] > temperatures[i] ) entao
+         menu1 <- temperatures[i]
+         temperatures[i] <- temperatures[j]
+         temperatures[j] <- menu1
+         menu2 <- horary[i]
+         horary[i] <- horary[j]
+         horary[j] <- menu2
+      fimse
+   fimpara
+fimpara
+
+fimprocedimento
+
+inicio
+
+Escreval()
+Escreval("Welcome to Easy Trip for EUA v2")
+
+repita
+menu()
+
+Escolha option
+
+Caso "1"
+armazenador()
+conversor()
+
+Caso "2"
+armazenador()
+conversor()
+
+Caso "3"
+outrocaso
+         Escreval()
+         Escreval("Option not found")
+   fimescolha
+ate option = "3"
+
+escreval("Thanks for using our app")
+
+fimalgoritmo
